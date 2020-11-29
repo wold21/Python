@@ -3,29 +3,64 @@
   <head>
     <title>Job Search</title>
     <style>
+        body {
+          background-color: #d4a373;
+        }
+        .main {
+          background-color: #faedcd;
+          box-sizing: border-box;
+          border-radius: 15px;
+          text-align: center;
+          font-size: 15px;
+          padding: 0.3px;
+          margin-left: 200px;
+          margin-right: 200px;
+          margin-bottom: 15px;
+          font-family: Copperplate Gothic Light;
+        }
+
+        .a {
+          box-sizing: border-box;
+          background-color: #e9edc9;
+          border-radius: 15px;
+          text-align: center;
+          margin-left: 300px;
+          margin-right: 300px;
+          padding: 20px;
+          font-family: Copperplate Gothic Bold;
+        }
         section{
-            display: grid;
-            gap:20px;
-            grid-template-columns: repeat(4, 1fr);
+          display: grid;
+          gap:35px;
+          grid-template-columns: repeat(3, 1fr);
+          border: 15px double #444444;
+          padding: 5px;
+          text-align: center;
+          margin-top: 15px;
+          background-color: #feffed ;
         }
     </style>
   </head>
   <body>
+    <div class="main">
     <h1>Search Results</h1>
     <h3>Found {{resultsNumber}} results for {{searchingBy}}</h3>
+  </div>
+  </body>
+    <div class="a">
+    <a href="/">Go to back</a><br><br>
     <a href="/export?word={{searchingBy}}">Export to CSV</a>
+  </div>
     <section>
         <h4>Title</h4>
         <h4>Company</h4>
-        <h4>Location</h4>
         <h4>Link</h4>
         {% for job in jobs %}
             <span>{{job.title}}</span>
             <span>{{job.company}}</span>
-            <span>{{job.location}}</span>
             <a href="{{job.link}}" target='_blank'>Apply</a>
         {% endfor %}
         <section>
 
-  </body>
+
 </html>

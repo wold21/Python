@@ -2,12 +2,44 @@
 <html>
   <head>
     <title>Job Search</title>
+    <style>
+      body {
+        background-color: #d4a373;
+      }
+      .main {
+        background-color: #faedcd;
+        box-sizing: border-box;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 400px;
+        margin-left: 300px;
+        margin-right: 300px;
+        font-family: Copperplate Gothic Light;
+      }
+
+      .a {
+        box-sizing: border-box;
+        background-color: #e9edc9;
+        border-radius: 15px;
+        text-align: center;
+        margin-left: 250px;
+        margin-right: 250px;
+        padding: 30px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Job Search</h1>
+    <div class="container">
+    <div class="main">
+      <h1>Job Search</h1>
+    </div>
     <form action="/report" method="get">
-      <input placeholder="Search for a job" required name="word" />
-      <button>Search</button>
+      <div class="a">
+        <input placeholder="Search for a job" required name="word" />
+        <button>Search</button>
+      </div>
+    </div>
     </form>
   </body>
 </html>

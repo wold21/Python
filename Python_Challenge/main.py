@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, send_file
-from Scrapper.so import get_jobs
+from Scrapper.so import get_so_jobs
+from Scrapper.indeed import get_indeed_jobs
+from Scrapper.wework import get_wework_jobs
 from save import save_to_file
 import csv
 
@@ -22,7 +24,7 @@ def report():
         if existingJobs:
             jobs=existingJobs
         else:
-            jobs=get_jobs(word)
+            jobs = get_so_jobs(word) + get_indeed_jobs(word) + get_wework_jobs(word)
             db[word] = jobs
     else:
         return redirect("/")
@@ -48,4 +50,4 @@ def export():
         return redirect("/")
 
 if __name__ == "__main__":
-    app.run(host="192.168.172.198", debug=True)
+    app.run(host="192.168.171.228", debug=True)
