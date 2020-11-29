@@ -8,14 +8,16 @@ def get_last_page(url):
     last_page = pages[-2].get_text(strip=True)
     return int(last_page)
 
+
 def extract_job(html):
     title = html.find("h2", {"class":"mb4"}).find("a")["title"]
     company, location = html.find("h3", {"class":"mb4"}).find_all("span", recursive=False)
     company = company.get_text(strip=True)
-    location = location.get_text(strip=True)
+    # location = location.get_text(strip=True)
     job_id = html["data-jobid"]
-    return {"title":title, "company":company, "location":location,
+    return {"title":title, "company":company,
             "apply link" : f"https://stackoverflow.com/jobs/{job_id}"}
+
 
 def extract_jobs(last_page, url):
     jobs=[]
@@ -29,7 +31,8 @@ def extract_jobs(last_page, url):
             jobs.append(job)
     return jobs
 
-def get_jobs(word):
+
+def get_so_jobs(word):
     url = f"https://stackoverflow.com/jobs?q={word}&sort=i"
     last_page = get_last_page(url)
     jobs = extract_jobs(last_page, url)
